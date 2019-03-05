@@ -74,7 +74,15 @@ public class TaskManager {
 	}
 
 	public void kill(Object obj) {
-		String process = "TASKKILL /IM "+obj;
+		
+		String process;
+		
+		try {
+			int pid = Integer.parseInt(obj.toString());
+			process = "TASKKILL /PID "+pid;
+		}catch(NumberFormatException e1) {
+			process = "TASKKILL /IM "+obj;
+		}
 		
 		try {
 			Runtime.getRuntime().exec(process);
@@ -92,6 +100,6 @@ public class TaskManager {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);	
 			}
 		}
-		System.out.println(obj);
+		
 	}
 }
