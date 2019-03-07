@@ -55,7 +55,8 @@ public class RedesController {
 	public String ping(String so) {
 		Integer media = null;
 		try {
-			Process pr = Runtime.getRuntime().exec("ping 8.8.8.8 -n 10");
+			Process pr = Runtime.getRuntime().exec("ping 8.8.8.8"
+					+ "] -n 10");
 			InputStream fluxo = pr.getInputStream();
 			InputStreamReader leitor = new InputStreamReader(fluxo);
 			BufferedReader buffer = new BufferedReader(leitor);
